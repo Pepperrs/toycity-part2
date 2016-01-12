@@ -34,15 +34,18 @@ def print_toy_total_purchases(toy)
   puts "Total purchases: #{toy['purchases'].length}"
 end
 
+def calculate_toy_total_sales(toy)
+  toy['purchases'].map { |purchase| purchase['price'] }.reduce(:+)
+end
+
 def print_toy_revenue(toy)
   # Calculate and print the total amount of sales
-  total_sales = toy['purchases'].map { |purchase| purchase['price'] }.reduce(:+)
-  puts "Revenue total: #{total_sales}$"
+  puts "Revenue total: #{calculate_toy_total_sales(toy)}$"
 end
 
 def calculate_toy_average_price(toy)
   # Calculate  the average price the toy sold for
-  total_sales / toy['purchases'].length
+  calculate_toy_total_sales(toy) / toy['purchases'].length
 end
 
 def print_toy_average_price(toy)
@@ -52,12 +55,12 @@ end
 
 def calculate_toy_average_discount_dollar(toy)
   # Calculate the average discount ($) based off the average sales price
-  toy['full-price'].to_f - average_price.to_f
+  toy['full-price'].to_f - calculate_toy_average_price(toy).to_f
 end
 
 def calculate_toy_average_discount_percent(toy)
   # Calculate the average discount ($) based off the average sales price
-  (100 - average_price.to_f / toy['full-price'].to_f * 100.0)
+  (100 - calculate_toy_average_price(toy).to_f / toy['full-price'].to_f * 100.0)
 end
 
 def print_toy_average_discount(toy)
@@ -70,7 +73,7 @@ def print_products
   print_in_ascii('products')
 
   # For each product in the data set:
-  products_hash['items'].each do |toy|
+  $products_hash['items'].each do |toy|
     print_toy_name(toy)
     print_toy_price(toy)
     print_toy_total_purchases(toy)
@@ -95,7 +98,7 @@ def create_brands_hash(hash)
       brands[toy['brand'].to_sym] << toy
     end
   end
-  return brands
+  brands
 end
 
 def print_brands
@@ -134,5 +137,7 @@ end
 
 def start
   setup_files
-  create_report($products_hash)
+  create_report
 end
+
+start
