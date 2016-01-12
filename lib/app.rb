@@ -2,10 +2,11 @@ require 'json'
 require 'date'
 require 'artii'
 $artii = Artii::Base.new
-def setup
+def setup_files
   path = File.join(File.dirname(__FILE__), '../data/products.json')
   file = File.read(path)
-  products_hash = JSON.parse(file)
+  $products_hash = JSON.parse(file)
+  $report_file = File.new('report.txt', 'w+')
 end
 
 # Print "Sales Report" in ascii art
@@ -23,8 +24,8 @@ def create_report
 end
 
 def start
-  products_hash = setup
-  create_report(products_hash)
+  setup_files
+  create_report($products_hash)
 end
 puts "\nSales Report"
 puts Date.today
