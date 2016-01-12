@@ -98,24 +98,43 @@ def create_brands_hash(hash)
       brands[toy['brand'].to_sym] << toy
     end
   end
-  return brands
+  brands
+end
+
+def print_brand_name(brand)
+  # Print the name of the brand
+  puts "\nName: #{brand}"
+end
+
+def calulate_brand_stock(products)
+  # Count the number of the brand's toys we stock
+  products.map { |product| product['stock'] }.reduce(:+)
+end
+
+def print_brand_stock(products)
+  # Print the number of the brand's toys we stock
+  puts "Brand stock total: #{calulate_brand_stock(products)}"
+  puts "Brands different products #{products.length}"
+end
+
+def calculate_brand_average_price(products)
+  # Calculate the average price of the brand's toys
+  (products.map { |product| product['full-price'].to_f }.reduce(:+)) / products.length
+end
+
+def print_brand_average_price(products)
+  # Print the average price of the brand's toys
+  print 'Brand average price:'
+  puts " #{calculate_brand_average_price(products).round(2)}$"
 end
 
 def print_brands
   print_in_ascii('brands')
   brands = create_brands_hash($products_hash)
   brands.each do |brand, products|
-    # Print the name of the brand
-    puts "\nName: #{brand}"
-
-    # Count and print the number of the brand's toys we stock
-    brand_stock = products.map { |product| product['stock'] }.reduce(:+)
-    puts "Brand stock total: #{brand_stock}"
-    puts "Brands different products #{products.length}"
-
-    # Calculate and print the average price of the brand's toys
-    brand_average_price = (products.map { |product| product['full-price'].to_f }.reduce(:+)) / products.length
-    puts "Brand average price: #{brand_average_price.round(2)}$"
+    print_brand_name(brand)
+    print_brand_stock(products)
+    print_brand_average_price(products)
 
     # Calculate and print the total revenue of all the brand's toy sales combined
     brand_revenue = 0.0
