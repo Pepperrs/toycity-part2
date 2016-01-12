@@ -23,13 +23,47 @@ def print_toy_name(toy)
   # Print the name of the toy
   puts "\nName: #{toy['title']}"
 end
-def print_toy_price
-# Print the retail price of the toy
-puts "Retail price: #{toy['full-price']}$"
+
+def print_toy_price(toy)
+  # Print the retail price of the toy
+  puts "Retail price: #{toy['full-price']}$"
 end
-def print_toy_total_purchases
-# Calculate and print the total number of purchases
-puts "Total purchases: #{toy['purchases'].length}"
+
+def print_toy_total_purchases(toy)
+  # Calculate and print the total number of purchases
+  puts "Total purchases: #{toy['purchases'].length}"
+end
+
+def print_toy_revenue(toy)
+  # Calculate and print the total amount of sales
+  total_sales = toy['purchases'].map { |purchase| purchase['price'] }.reduce(:+)
+  puts "Revenue total: #{total_sales}$"
+end
+
+def calculate_toy_average_price(toy)
+  # Calculate  the average price the toy sold for
+  total_sales / toy['purchases'].length
+end
+
+def print_toy_average_price(toy)
+  # Print the average price the toy sold for
+  puts "Average sale price: #{calculate_toy_average_price(toy)}$"
+end
+
+def calculate_toy_average_discount_dollar(toy)
+  # Calculate the average discount ($) based off the average sales price
+  toy['full-price'].to_f - average_price.to_f
+end
+
+def calculate_toy_average_discount_percent(toy)
+  # Calculate the average discount ($) based off the average sales price
+  (100 - average_price.to_f / toy['full-price'].to_f * 100.0)
+end
+
+def print_toy_average_discount(toy)
+  # Print the average discount (% or $) based off the average sales price
+  print "Average discount: #{calculate_toy_average_discount_dollar(toy)}$ = "
+  puts "#{calculate_toy_average_discount_percent(toy).round(2)}%"
 end
 
 def print_products
@@ -39,18 +73,10 @@ def print_products
   products_hash['items'].each do |toy|
     print_toy_name(toy)
     print_toy_price(toy)
-    print_toy_total_purchases(toy)    # Calculate and print the total amount of sales
-    total_sales = toy['purchases'].map { |purchase| purchase['price'] }.reduce(:+)
-    puts "Revenue total: #{total_sales}$"
-
-    # Calculate and print the average price the toy sold for
-    average_price = total_sales / toy['purchases'].length
-    puts "Average sale price: #{average_price}$"
-
-    # Calculate and print the average discount (% or $) based off the average sales price
-    average_discount_dollar = toy['full-price'].to_f - average_price.to_f
-    average_discount_percent = (100 - average_price.to_f / toy['full-price'].to_f * 100.0)
-    puts "Average discount: #{average_discount_dollar}$ = #{average_discount_percent.round(2)}%"
+    print_toy_total_purchases(toy)
+    print_toy_revenue(toy)
+    print_toy_average_price(toy)
+    print_toy_average_discount(toy)
   end
 end
 
