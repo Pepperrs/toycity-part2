@@ -2,6 +2,8 @@ require 'json'
 require 'date'
 require 'artii'
 $artii = Artii::Base.new
+
+
 def setup_files
   path = File.join(File.dirname(__FILE__), '../data/products.json')
   file = File.read(path)
@@ -128,6 +130,23 @@ def print_brand_average_price(products)
   puts " #{calculate_brand_average_price(products).round(2)}$"
 end
 
+def calculate_brand_revenue(products)
+  # Calculate the total revenue of all the brand's toy sales combined
+  brand_revenue = 0.0
+  all_purchases_per_product = products.map { |product| product['purchases'] }
+  all_purchases_per_product.each do |product|
+    product.each do |sale|
+      brand_revenue += sale['price']
+    end
+  end
+  brand_revenue
+end
+
+def print_brand_revenue(products)
+  # Print the total revenue of all the brand's toy sales combined
+  puts "Brand revenue: #{calculate_brand_revenue(products).round(2)}$"
+end
+
 def print_brands
   print_in_ascii('brands')
   brands = create_brands_hash($products_hash)
@@ -135,16 +154,7 @@ def print_brands
     print_brand_name(brand)
     print_brand_stock(products)
     print_brand_average_price(products)
-
-    # Calculate and print the total revenue of all the brand's toy sales combined
-    brand_revenue = 0.0
-    all_purchases_per_product = products.map { |product| product['purchases'] }
-    all_purchases_per_product.each do |product|
-      product.each do |sale|
-        brand_revenue += sale['price']
-      end
-    end
-    puts "Brand revenue: #{brand_revenue.round(2)}$"
+    print_brand_revenue(products)
   end
 end
 
