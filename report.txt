@@ -1,0 +1,59 @@
+
+            _                                    _   
+           | |                                  | |  
+  ___  __ _| | ___ ___ _ __ ___ _ __   ___  _ __| |_ 
+ / __|/ _` | |/ _ \ __| '__/ _ \ '_ \ / _ \| '__| __|
+ \__ \ (_| | |  __\__ \ | |  __/ |_) | (_) | |  | |_ 
+ |___/\__,_|_|\___|___/_|  \___| .__/ \___/|_|   \__|
+                               | |                   
+                               |_|                   
+2016-01-13
+                      _            _       
+                     | |          | |      
+  _ __  _ __ ___   __| |_   _  ___| |_ ___ 
+ | '_ \| '__/ _ \ / _` | | | |/ __| __/ __|
+ | |_) | | | (_) | (_| | |_| | (__| |_\__ \
+ | .__/|_|  \___/ \__,_|\__,_|\___|\__|___/
+ | |                                       
+ |_|                                       
+
+Name: LEGO Iron Man vs. Ultron
+Retail price: 22.99$
+Total purchases: 2
+Revenue total: 36.98$
+Average sale price: 18.49$
+Average discount: 4.5$ = 19.57%
+
+Name: Nano Block Empire State Building
+Retail price: 49.99$
+Total purchases: 2
+Revenue total: 68.98$
+Average sale price: 34.49$
+Average discount: 15.5$ = 31.01%
+
+Name: LEGO Firehouse Headquarters
+Retail price: 199.99$
+Total purchases: 2
+Revenue total: 379.98$
+Average sale price: 189.99$
+Average discount: 10.0$ = 5.0%
+  _                         _     
+ | |                       | |    
+ | |__  _ __ __ _ _ __   __| |___ 
+ | '_ \| '__/ _` | '_ \ / _` / __|
+ | |_) | | | (_| | | | | (_| \__ \
+ |_.__/|_|  \__,_|_| |_|\__,_|___/
+                                  
+                                  
+
+Name: LEGO
+Brand stock total: 55
+Brands different products 2
+Brand average price: 111.49$
+Brand revenue: 416.96$
+
+Name: Nano Blocks
+Brand stock total: 12
+Brands different products 1
+Brand average price: 49.99$
+Brand revenue: 68.98$

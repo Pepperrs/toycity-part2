@@ -3,7 +3,6 @@ require 'date'
 require 'artii'
 $artii = Artii::Base.new
 
-
 def setup_files
   path = File.join(File.dirname(__FILE__), '../data/products.json')
   file = File.read(path)
@@ -13,27 +12,27 @@ end
 
 # Print "Sales Report" in ascii art
 def print_in_ascii(text = 'text')
-  puts $artii.asciify(text)
+  $report_file.write "\n#{$artii.asciify(text)}"
 end
 
 def print_heading
   print_in_ascii('salesreport')
-  puts Date.today
+  $report_file.write "\n#{Date.today}"
 end
 
 def print_toy_name(toy)
   # Print the name of the toy
-  puts "\nName: #{toy['title']}"
+  $report_file.write "\n\nName: #{toy['title']}"
 end
 
 def print_toy_price(toy)
   # Print the retail price of the toy
-  puts "Retail price: #{toy['full-price']}$"
+  $report_file.write "\nRetail price: #{toy['full-price']}$"
 end
 
 def print_toy_total_purchases(toy)
   # Calculate and print the total number of purchases
-  puts "Total purchases: #{toy['purchases'].length}"
+  $report_file.write "\nTotal purchases: #{toy['purchases'].length}"
 end
 
 def calculate_toy_total_sales(toy)
@@ -42,7 +41,7 @@ end
 
 def print_toy_revenue(toy)
   # Calculate and print the total amount of sales
-  puts "Revenue total: #{calculate_toy_total_sales(toy)}$"
+  $report_file.write "\nRevenue total: #{calculate_toy_total_sales(toy)}$"
 end
 
 def calculate_toy_average_price(toy)
@@ -52,7 +51,8 @@ end
 
 def print_toy_average_price(toy)
   # Print the average price the toy sold for
-  puts "Average sale price: #{calculate_toy_average_price(toy)}$"
+  $report_file.write "\nAverage sale price: "
+  $report_file.write "#{calculate_toy_average_price(toy)}$"
 end
 
 def calculate_toy_average_discount_dollar(toy)
@@ -67,8 +67,9 @@ end
 
 def print_toy_average_discount(toy)
   # Print the average discount (% or $) based off the average sales price
-  print "Average discount: #{calculate_toy_average_discount_dollar(toy)}$ = "
-  puts "#{calculate_toy_average_discount_percent(toy).round(2)}%"
+  $report_file.write "\nAverage discount: "
+  $report_file.write "#{calculate_toy_average_discount_dollar(toy)}$ = "
+  $report_file.write "#{calculate_toy_average_discount_percent(toy).round(2)}%"
 end
 
 def print_products
@@ -105,7 +106,7 @@ end
 
 def print_brand_name(brand)
   # Print the name of the brand
-  puts "\nName: #{brand}"
+  $report_file.write "\n\nName: #{brand}"
 end
 
 def calulate_brand_stock(products)
@@ -115,8 +116,8 @@ end
 
 def print_brand_stock(products)
   # Print the number of the brand's toys we stock
-  puts "Brand stock total: #{calulate_brand_stock(products)}"
-  puts "Brands different products #{products.length}"
+  $report_file.write "\nBrand stock total: #{calulate_brand_stock(products)}"
+  $report_file.write "\nBrands different products #{products.length}"
 end
 
 def calculate_brand_average_price(products)
@@ -126,8 +127,8 @@ end
 
 def print_brand_average_price(products)
   # Print the average price of the brand's toys
-  print 'Brand average price:'
-  puts " #{calculate_brand_average_price(products).round(2)}$"
+  $report_file.write "\nBrand average price:"
+  $report_file.write " #{calculate_brand_average_price(products).round(2)}$"
 end
 
 def calculate_brand_revenue(products)
@@ -144,7 +145,7 @@ end
 
 def print_brand_revenue(products)
   # Print the total revenue of all the brand's toy sales combined
-  puts "Brand revenue: #{calculate_brand_revenue(products).round(2)}$"
+  $report_file.write "\nBrand revenue: #{calculate_brand_revenue(products).round(2)}$"
 end
 
 def print_brands
