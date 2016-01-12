@@ -80,59 +80,58 @@ def print_products
   end
 end
 
+
+def print_brands
+  print_in_ascii('brands')
+  # For each brand in the data set:
+  # create a hash of all brands and toys {:Lego => [toy1, toy2], :nano => [toy3]}
+  brands = {}
+  products_hash['items'].each do |toy|
+    if !brands.include?(toy['brand'].to_sym)
+      # if brands does not contain the brand yet, add the brand as the key
+      # and the toy in an array to the value
+      brands[toy['brand'].to_sym] = [toy]
+
+    else
+      # else add toy to the value's array
+      brands[toy['brand'].to_sym] << toy
+    end
+  end
+
+  brands.each do |brand, products|
+    # Print the name of the brand
+    puts "\nName: #{brand}"
+
+    # Count and print the number of the brand's toys we stock
+    brand_stock = products.map { |product| product['stock'] }.reduce(:+)
+    puts "Brand stock total: #{brand_stock}"
+    puts "Brands different products #{products.length}"
+
+    # Calculate and print the average price of the brand's toys
+    brand_average_price = (products.map { |product| product['full-price'].to_f }.reduce(:+)) / products.length
+    puts "Brand average price: #{brand_average_price.round(2)}$"
+
+    # Calculate and print the total revenue of all the brand's toy sales combined
+    brand_revenue = 0.0
+    all_purchases_per_product = products.map { |product| product['purchases'] }
+    all_purchases_per_product.each do |product|
+      product.each do |sale|
+        brand_revenue += sale['price']
+      end
+    end
+    puts "Brand revenue: #{brand_revenue.round(2)}$"
+  end
+
+end
+
+
 def create_report
   print_heading
   print_products
+  print_brands
 end
 
 def start
   setup_files
   create_report($products_hash)
-end
-
-puts ' _                         _     '
-puts '| |                       | |    '
-puts '| |__  _ __ __ _ _ __   __| |___ '
-puts "| '_ \\| '__/ _` | '_ \\ / _` / __|"
-puts '| |_) | | | (_| | | | | (_| \\__ \\'
-puts '|_.__/|_|  \\__,_|_| |_|\\__,_|___/'
-puts
-
-# For each brand in the data set:
-# create a hash of all brands and toys {:Lego => [toy1, toy2], :nano => [toy3]}
-brands = {}
-products_hash['items'].each do |toy|
-  if !brands.include?(toy['brand'].to_sym)
-    # if brands does not contain the brand yet, add the brand as the key
-    # and the toy in an array to the value
-    brands[toy['brand'].to_sym] = [toy]
-
-  else
-    # else add toy to the value's array
-    brands[toy['brand'].to_sym] << toy
-  end
-end
-
-brands.each do |brand, products|
-  # Print the name of the brand
-  puts "\nName: #{brand}"
-
-  # Count and print the number of the brand's toys we stock
-  brand_stock = products.map { |product| product['stock'] }.reduce(:+)
-  puts "Brand stock total: #{brand_stock}"
-  puts "Brands different products #{products.length}"
-
-  # Calculate and print the average price of the brand's toys
-  brand_average_price = (products.map { |product| product['full-price'].to_f }.reduce(:+)) / products.length
-  puts "Brand average price: #{brand_average_price.round(2)}$"
-
-  # Calculate and print the total revenue of all the brand's toy sales combined
-  brand_revenue = 0.0
-  all_purchases_per_product = products.map { |product| product['purchases'] }
-  all_purchases_per_product.each do |product|
-    product.each do |sale|
-      brand_revenue += sale['price']
-    end
-  end
-  puts "Brand revenue: #{brand_revenue.round(2)}$"
 end
