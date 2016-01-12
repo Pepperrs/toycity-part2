@@ -10,7 +10,7 @@ def setup_files
 end
 
 # Print "Sales Report" in ascii art
-def print_in_ascii(text)
+def print_in_ascii(text = 'text')
   puts $artii.asciify(text)
 end
 
@@ -80,13 +80,11 @@ def print_products
   end
 end
 
-
-def print_brands
-  print_in_ascii('brands')
+def create_brands_hash(hash)
   # For each brand in the data set:
-  # create a hash of all brands and toys {:Lego => [toy1, toy2], :nano => [toy3]}
+  # create a hash of all brands and toys {:Lego => [toy1, toy2],:nano => [toy3]}
   brands = {}
-  products_hash['items'].each do |toy|
+  hash['items'].each do |toy|
     if !brands.include?(toy['brand'].to_sym)
       # if brands does not contain the brand yet, add the brand as the key
       # and the toy in an array to the value
@@ -97,7 +95,12 @@ def print_brands
       brands[toy['brand'].to_sym] << toy
     end
   end
+  return brands
+end
 
+def print_brands
+  print_in_ascii('brands')
+  brands = create_brands_hash($products_hash)
   brands.each do |brand, products|
     # Print the name of the brand
     puts "\nName: #{brand}"
@@ -121,9 +124,7 @@ def print_brands
     end
     puts "Brand revenue: #{brand_revenue.round(2)}$"
   end
-
 end
-
 
 def create_report
   print_heading
