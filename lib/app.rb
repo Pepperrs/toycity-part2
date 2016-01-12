@@ -98,7 +98,7 @@ def create_brands_hash(hash)
       brands[toy['brand'].to_sym] << toy
     end
   end
-  brands
+  return brands
 end
 
 def print_brands
