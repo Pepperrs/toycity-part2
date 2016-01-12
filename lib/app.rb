@@ -1,4 +1,5 @@
 require 'json'
+require 'date'
 path = File.join(File.dirname(__FILE__), '../data/products.json')
 file = File.read(path)
 products_hash = JSON.parse(file)
