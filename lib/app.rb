@@ -1,7 +1,6 @@
 require 'json'
 require 'date'
 require 'artii'
-$artii = Artii::Base.new
 
 def setup_files
   path = File.join(File.dirname(__FILE__), '../data/products.json')
@@ -10,16 +9,28 @@ def setup_files
   $report_file = File.new('report.txt', 'w+')
 end
 
-# Print "Sales Report" in ascii art
-def print_in_ascii(text = 'text')
-  $report_file.write "\n#{$artii.asciify(text)}"
-end
-
 def print_heading
-  print_in_ascii('salesreport')
+  # Print "Sales Report" in ascii art
+
+  $report_file.write "\n _____        _            _____                       _"
+  $report_file.write "\n/ ____|      | |          |  __ \\                     | |"
+  $report_file.write "\n| (___   __ _| | ___ ___  | |__) |___ _ __   ___  _ __| |_"
+  $report_file.write "\n \\___ \\ / _` | |/ _ \\ __| |  _  // _ \\ '_ \\ / _ \\| '__| __|"
+  $report_file.write "\n ____) | (_| | |  __\\__ \\ | | \\ \\  __/ |_) | (_) | |  | |_"
+  $report_file.write "\n|_____/ \\__,_|_|\\___|___/ |_|  \\_\\___| .__/ \\___/|_|   \\__|"
+  $report_file.write "\n                                   | |"
+  $report_file.write "\n                                   |_|"
+
   $report_file.write "\n#{Date.today}"
 end
-
+def print_product_label
+  $report_file.write  "\n _____               _            _"
+  $report_file.write  "\n|  __ \\             | |          | |"
+  $report_file.write  "\n| |__) | __ ___   __| |_   _  ___| |_ ___"
+  $report_file.write  "\n|  ___/ '__/ _ \\ / _` | | | |/ __| __/ __|"
+  $report_file.write  "\n| |   | | | (_) | (_| | |_| | (__| |_\\__ \\"
+  $report_file.write  "\n|_|   |_|  \\___/ \\__,_|\\__,_|\\___|\\__|___/"
+end
 def print_toy_name(toy)
   # Print the name of the toy
   $report_file.write "\n\nName: #{toy['title']}"
@@ -73,7 +84,7 @@ def print_toy_average_discount(toy)
 end
 
 def print_products
-  print_in_ascii('products')
+  print_product_label
 
   # For each product in the data set:
   $products_hash['items'].each do |toy|
@@ -84,6 +95,15 @@ def print_products
     print_toy_average_price(toy)
     print_toy_average_discount(toy)
   end
+end
+
+def print_brands_label
+  $report_file.write "\n ____                      _"
+  $report_file.write "\n|  _ \\                    | |"
+  $report_file.write "\n| |_) |_ __ __ _ _ __   __| |___"
+  $report_file.write "\n|  _ <| '__/ _` | '_ \\ / _` / __|"
+  $report_file.write "\n| |_) | | | (_| | | | | (_| \\__ \\"
+  $report_file.write "\n|____/|_|  \\__,_|_| |_|\\__,_|___/"
 end
 
 def create_brands_hash(hash)
@@ -149,7 +169,7 @@ def print_brand_revenue(products)
 end
 
 def print_brands
-  print_in_ascii('brands')
+  print_brands_label
   brands = create_brands_hash($products_hash)
   brands.each do |brand, products|
     print_brand_name(brand)
