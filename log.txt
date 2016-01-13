@@ -1,0 +1,89 @@
+commit b71f8c1e170a4a5daa59e0828940791e2448335f
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Wed Jan 13 00:57:13 2016 +0100
+
+    refactor output to report.txt
+
+commit ba56de2b68ed573b1af279e878abd7922829d3c8
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Wed Jan 13 00:44:03 2016 +0100
+
+    add print_brand_revenue(products)
+
+commit 1fe411362f36bd82660f5d12eb854c017c899c71
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Wed Jan 13 00:37:54 2016 +0100
+
+    add print_brand_name, print_brand_stock and print_brand_average_price
+
+commit 6cf578a0ce4f71a84785122cf872b45227c02a5c
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Wed Jan 13 00:26:45 2016 +0100
+
+    add return value for create_brands_hash
+
+commit 5b533a1ecfcdd5c037d20ab38793172cab6ac6a5
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Wed Jan 13 00:13:01 2016 +0100
+
+    refactored missing dependencies
+
+commit a548169c2deba69ae8c509791fe0077faf6bdbc7
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Wed Jan 13 00:05:54 2016 +0100
+
+    add create_brands_hash(hash)
+
+commit 115fb5f813cf0c8ebabc866ae5a02c072040ac2c
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Wed Jan 13 00:00:12 2016 +0100
+
+    move brands part to print_brands
+
+commit 7c9e20531833559b5bb2e38b499b7d68b1f18afe
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Tue Jan 12 23:55:11 2016 +0100
+
+    add print_toy_revenue(toy) print_toy_average_price(toy) print_toy_average_discount(toy)
+
+commit 52f95fc750b49509114cda6b6eccd3db1b2f3283
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Tue Jan 12 23:46:25 2016 +0100
+
+    add print_toy_name, print_toy_price and print_toy_total_purchases
+
+commit bde048f79fff8424b536815878aba3944398a61c
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Tue Jan 12 23:30:11 2016 +0100
+
+    add setup_files with report_file
+
+commit 27716c777191f9088b4c862e4ff94f8f467c7f09
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Tue Jan 12 23:27:34 2016 +0100
+
+    add basic structure and asciify
+
+commit 6de6145c454b748a62aec300dc7cb28c18606366
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Tue Jan 12 22:59:19 2016 +0100
+
+    add date requirement
+
+commit 156559c49986b055ea7fd65dc3451d02416614a2
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Tue Jan 12 22:22:53 2016 +0100
+
+    add code from part1
+
+commit 5e6cb566fee817bfa6072e691439b5ccd173bbf9
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Tue Jan 12 22:11:12 2016 +0100
+
+    initial commit
+
+commit fc2a78e178b103e82b0cca8bb25aa6e54fc7d943
+Author: [Peter Schüllermann] <[peter.schuellermann@gmail.com]>
+Date:   Tue Jan 12 21:40:08 2016 +0100
+
+    :tada: Added .gitattributes & .gitignore files
