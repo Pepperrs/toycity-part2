@@ -1,3 +1,16 @@
+commit 9244ec244f1e125fdb22655df15616791216e8c5
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Wed Jan 13 02:57:57 2016 +0100
+
+    remove artii gem
+    refactored to asciiart
+
+commit 23dabc96a5997ab69f93b5b5ed861e017d3a213a
+Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
+Date:   Wed Jan 13 01:01:02 2016 +0100
+
+    add log.txt
+
 commit b71f8c1e170a4a5daa59e0828940791e2448335f
 Author: Peter Schüllermann <Peter.schuellermann@gmail.com>
 Date:   Wed Jan 13 00:57:13 2016 +0100
